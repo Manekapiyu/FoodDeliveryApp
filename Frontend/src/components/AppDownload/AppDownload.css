@@ -1,0 +1,144 @@
+.app-download {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin: auto;
+   margin-top: 100px;
+   font-size: max(2.5vw, 20px);
+   font-weight: 600;
+   background: #FFA500; 
+   padding: 3.5rem 3rem;
+   border-radius: 15px;
+   box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+   width: 80%;
+   max-width: 1000px; 
+   border: 2px solid #fff; 
+}
+
+.app-download p {
+   font-size: max(1.5vw, 18px);
+   margin-bottom: 2rem;
+   line-height: 1.5;
+}
+
+.app-download-platforms {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start; /* Align images to the left */
+   gap: 1.5rem;
+   animation: slideInUp 1s ease-out; 
+   align-items: center;
+}
+
+.app-download-platforms img {
+   width: 160px;
+   cursor: pointer;
+   transition: transform 0.3s ease-in-out;
+}
+
+.app-download-platforms img:hover {
+   transform: scale(1.1);
+}
+
+.app-download-details {
+   max-width: 50%; /* Adjust the width for text content */
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   gap: 1rem;
+}
+
+.app-download-image {
+   max-width: 45%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border: 2px solid #fff; 
+   border-radius: 15px;
+   padding: 1rem; 
+   position: relative;
+}
+
+.app-download-image img {
+   max-width: 100%;
+   border-radius: 10px; /* Ensure the image has rounded corners */
+}
+
+/* Keyframe animation for moving the image up and down */
+@keyframes moveUpDown {
+   0% {
+      transform: translateY(0);
+   }
+   50% {
+      transform: translateY(-10px); /* Move up */
+   }
+   100% {
+      transform: translateY(0);
+   }
+}
+
+.app-download-image img {
+   animation: moveUpDown 2s ease-in-out infinite; /* Apply the animation */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+   .app-download {
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+   }
+
+   .app-download p {
+      font-size: 18px;
+   }
+
+   .app-download-platforms {
+      align-items: center;
+      gap: 1rem;
+   }
+
+   .app-download-platforms img {
+      width: 120px;
+   }
+
+   .app-download-details {
+      max-width: 90%;
+      text-align: center;
+      margin-top: 2rem;
+   }
+
+   .app-download-image {
+      max-width: 80%;
+      margin-top: 2rem;
+   }
+
+   .app-download-image img {
+      max-width: 100%;
+      border-radius: 15px;
+   }
+}
+
+@media (max-width: 480px) {
+   .app-download {
+      font-size: 16px;
+      padding: 1.5rem;
+   }
+
+   .app-download p {
+      font-size: 14px;
+   }
+
+   .app-download-platforms img {
+      width: 100px;
+   }
+
+   .app-download-details {
+      max-width: 100%;
+      text-align: center;
+   }
+
+   .app-download-image {
+      max-width: 90%;
+   }
+}
