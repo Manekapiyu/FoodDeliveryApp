@@ -93,7 +93,7 @@
     font-size: 18px;
     font-weight: bold;
     color: white;
-    background: linear-gradient(90deg, #ff6f61, #d9534f);
+    background: rgb(217, 116, 28);;
     border: none;
     border-radius: 8px;
     cursor: pointer;
