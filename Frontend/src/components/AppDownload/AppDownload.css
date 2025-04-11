@@ -6,46 +6,59 @@
    margin-top: 100px;
    font-size: max(2.5vw, 20px);
    font-weight: 600;
-   background: #FFA500; 
-   padding: 3.5rem 3rem;
-   border-radius: 15px;
-   box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
-   width: 80%;
-   max-width: 1000px; 
-   border: 2px solid #fff; 
+   background: linear-gradient(135deg,#ffecd2, #efae36); 
+   padding: 4rem 3rem;
+   border-radius: 20px; 
+   box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1); 
+   max-width: 1150px;
+   border: 2px solid #fff;
+   transition: transform 0.3s ease-in-out;
+}
+
+.app-download:hover {
+   transform: translateY(-5px); 
 }
 
 .app-download p {
    font-size: max(1.5vw, 18px);
    margin-bottom: 2rem;
-   line-height: 1.5;
+   line-height: 1.6;
+   color: #333; /* Darker color for readability */
+   font-family: 'Roboto', sans-serif; /* Better font for readability */
+   transition: color 0.3s ease;
+}
+
+.app-download p:hover {
+   color: #e55d5d; /* Highlight text color on hover */
 }
 
 .app-download-platforms {
    display: flex;
    flex-direction: column;
-   align-items: flex-start; /* Align images to the left */
+   align-items: flex-start; 
    gap: 1.5rem;
-   animation: slideInUp 1s ease-out; 
+   animation: slideInUp 1s ease-out;
    align-items: center;
 }
 
 .app-download-platforms img {
-   width: 160px;
+   width: 170px;
    cursor: pointer;
-   transition: transform 0.3s ease-in-out;
+   transition: transform 0.3s ease-in-out, opacity 0.3s ease;
 }
 
 .app-download-platforms img:hover {
    transform: scale(1.1);
+   opacity: 0.8; /* Slight opacity on hover for visual feedback */
 }
 
 .app-download-details {
-   max-width: 50%; /* Adjust the width for text content */
+   max-width: 50%; /* Adjust for balance */
    display: flex;
    flex-direction: column;
    justify-content: center;
    gap: 1rem;
+   text-align: center;
 }
 
 .app-download-image {
@@ -53,15 +66,22 @@
    display: flex;
    justify-content: center;
    align-items: center;
-   border: 2px solid #fff; 
+   border: 2px solid #fff;
    border-radius: 15px;
-   padding: 1rem; 
+   padding: 1rem;
    position: relative;
+   overflow: hidden;
 }
 
 .app-download-image img {
    max-width: 100%;
-   border-radius: 10px; /* Ensure the image has rounded corners */
+   border-radius: 10px;
+   animation: moveUpDown 2s ease-in-out infinite;
+   transition: transform 0.3s ease;
+}
+
+.app-download-image:hover img {
+   transform: scale(1.05); /* Slight zoom effect on hover */
 }
 
 /* Keyframe animation for moving the image up and down */
@@ -70,15 +90,11 @@
       transform: translateY(0);
    }
    50% {
-      transform: translateY(-10px); /* Move up */
+      transform: translateY(-10px);
    }
    100% {
       transform: translateY(0);
    }
-}
-
-.app-download-image img {
-   animation: moveUpDown 2s ease-in-out infinite; /* Apply the animation */
 }
 
 /* Mobile Responsiveness */
@@ -99,7 +115,7 @@
    }
 
    .app-download-platforms img {
-      width: 120px;
+      width: 140px;
    }
 
    .app-download-details {

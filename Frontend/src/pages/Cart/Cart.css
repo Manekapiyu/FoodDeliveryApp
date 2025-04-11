@@ -1,9 +1,17 @@
 .cart {
-    margin-top: 100px;
+    margin-top: 8px;
     padding: 20px;
     background: #fff;
 }
 
+.cart-heading {
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+    margin: 2px 0;
+    margin-bottom: 12px;
+  }
+   
 .cart-items-title {
     display: grid;
     grid-template-columns: 1fr 1.5fr 1fr 1fr 1fr 0.5fr;

@@ -10,6 +10,11 @@ const Cart = () => {
 
   return (
     <div className='cart'>
+    <div className='cart'>
+    <h2 className='cart-heading'>
+      {getTotalCartAmount() === 0 ? "🛒 Your Cart is Empty" : "🛒 Your Shopping Cart"}
+    </h2>
+</div>
       <div className='cart-items'>
         <div className='cart-items-title'>
           <p>Items</p>
