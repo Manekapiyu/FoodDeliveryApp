@@ -68,6 +68,7 @@ export const assets = {
   search_icon,
   basket_icon,
   header_img1,
+  parcel_icon,
   header_img2,
   rating_starts,
   add_icon_green,
