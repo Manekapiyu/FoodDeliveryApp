@@ -1,5 +1,5 @@
 .navbar{
-    padding:1px 0px;
+    padding:0px 0px;
     display:flex;
     justify-content: space-between;
     align-items: center;
@@ -22,17 +22,20 @@
   }
 
   .navbar button {
-    background: transparent;
-    padding: 10px 30px;
-    font-size: 16px;
-    color:#49557e;
-    border:1px solid rgb(71, 160, 255);
-    border-radius:50px;
-    cursor:pointer;
-    transition: 0.3;
-  }
+  background: transparent;
+  padding: 10px 30px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-right: 25px;
+  color: #edeae8;
+  background-color: rgb(252, 114, 16);
+  border: none; /* ✅ This removes the border */
+  border-radius: 10px;
+}
   .navbar button:hover{
-    background-color: azure;
+    background-color: bisque;
+    color: black;
   }
 
   .navbar .active{
