@@ -2,7 +2,7 @@ import React from "react";
 import "./AppDownload.css";
 import playStore from "../../assets/play_store.png"; 
 import appStore from "../../assets/app_store.png";  
-import foodImage from "../../assets/food.jpg"; 
+import foodImage from "../../assets/food.webp"; 
 
 const AppDownload = () => {
   return (

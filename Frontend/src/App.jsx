@@ -1,28 +1,47 @@
-import React, { useState } from "react"; 
+import React, { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+// Components & Pages
 import Navbar from "./components/Navbar/Navbar";
-import { Route, Routes } from "react-router-dom";
+import Footer from "./components/Footer/Footer";
+import LoginPopup from "./components/LoginPopup/LoginPopup";
 import Home from "./pages/Home/Home";
 import Cart from "./pages/Cart/Cart";
 import PlaceOrder from "./pages/PlaceOrder/PlaceOrder";
-import Footer from "./components/Footer/Footer";
-import LoginPopup from "./components/LoginPopup/LoginPopup";
-import BackgroundChanger from "./components/background/backgroundChanger";
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
 
   return (
     <>
+      {/* Toast Notification Container */}
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+
+      {/* Show Login Popup if triggered */}
       {showLogin && <LoginPopup setShowLogin={setShowLogin} />}
+
       <div className="App">
         <Navbar setShowLogin={setShowLogin} />
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/order" element={<PlaceOrder />} />
         </Routes>
+
+        <Footer />
       </div>
-      <Footer />
     </>
   );
 };

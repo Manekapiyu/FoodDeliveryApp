@@ -6,7 +6,7 @@
     transition: 0.3s;
     animation: fadeIn 1s;
     background-color: rgba(255, 248, 220, 0.5);
-    border: 2px solid #FFD700; 
+    border: 2px solid #efdc72; /* Add a golden border */
 }
 
 .food-item-image{

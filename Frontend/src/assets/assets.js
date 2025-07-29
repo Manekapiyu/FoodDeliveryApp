@@ -1,9 +1,8 @@
 import basket_icon from './basket_icon.png';
 import logo from './logo.webp';
-import header_img1 from "./header_img1.png";
-import header_img2 from "./header_img2.png";
+import header_img1 from "./header_img.png";
 import search_icon from './search_icon.png';
-import food_img from './food.jpg'; 
+import food_img from './food.webp'; 
 import menu_1 from './menu_1.jpeg';
 import menu_2 from './menu_2.jpg';
 import menu_3 from './menu_3.jpeg';
@@ -69,7 +68,6 @@ export const assets = {
   basket_icon,
   header_img1,
   parcel_icon,
-  header_img2,
   rating_starts,
   add_icon_green,
   add_icon_white,
