@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import Sidebar from './components/Sidebar/Sidebar';
+import Sidebar from './components/Sidebar/Sidebar'
 import Navbar from './components/Navbar/Navbar'
 import {Routes,Route} from 'react-router-dom'
 import Orders from './pages/Orders/Orders.jsx'
