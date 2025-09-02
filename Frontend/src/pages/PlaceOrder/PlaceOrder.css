@@ -1,0 +1,116 @@
+.place-order {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 50px;
+    margin: 80px auto;
+    padding: 40px;
+    max-width: 1100px;
+    background: linear-gradient(135deg, #fdfbfb, #ebedee);
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.place-order-left {
+    width: 100%;
+    max-width: 500px;
+    padding: 25px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.place-order-left .title {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.place-order-left input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #c5c5c5;
+    border-radius: 6px;
+    outline-color: tomato;
+    transition: 0.3s ease-in-out;
+    margin-bottom: 15px;
+}
+
+.place-order-left input:focus {
+    border-color: tomato;
+    box-shadow: 0 0 6px rgba(255, 99, 71, 0.5);
+}
+
+.multi-fields {
+    display: flex;
+    gap: 10px;
+}
+
+/* Order Summary Styling */
+.place-order-right {
+    width: 100%;
+    max-width: 400px;
+    padding: 25px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.place-order-right h2 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.cart-total {
+    background: #f5f5f5;
+    padding: 15px;
+    border-radius: 6px;
+}
+
+.cart-total-details {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    padding: 8px 0;
+}
+
+.cart-total .total {
+    font-size: 20px;
+    font-weight: bold;
+    color: #d9534f;
+}
+
+.place-order button {
+    width: 100%;
+    padding: 14px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background: rgb(217, 116, 28);;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.place-order button:hover {
+    background: linear-gradient(90deg, #d9534f, #ff6f61);
+    box-shadow: 0 4px 10px rgba(255, 99, 71, 0.3);
+}
+
+@media (max-width: 768px) {
+    .place-order {
+        flex-direction: column;
+        padding: 20px;
+        gap: 30px;
+    }
+
+    .place-order-left, .place-order-right {
+        max-width: 100%;
+    }
+}
