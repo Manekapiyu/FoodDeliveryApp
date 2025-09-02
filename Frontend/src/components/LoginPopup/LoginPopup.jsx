@@ -5,7 +5,7 @@ import { StoreContext } from "../../context/StoreContext";
 import { toast } from "react-toastify";
 
 const LoginPopup = ({ setShowLogin }) => {
-  const { url, settoken } = useContext(StoreContext); // 👈 also get settoken
+  const { url, setToken } = useContext(StoreContext); // ✅ correct casing
   const [currState, setCurrState] = useState("Login");
   const [data, setData] = useState({
     name: "",
@@ -20,27 +20,20 @@ const LoginPopup = ({ setShowLogin }) => {
 
   const onLogin = async (event) => {
     event.preventDefault();
-    let newUrl = url;
-
-    if (currState === "Login") {
-      newUrl += "/api/user/login";
-    } else {
-      newUrl += "/api/user/register";
-    }
+    let endpoint = currState === "Login" ? "/api/user/login" : "/api/user/register";
 
     try {
-      const response = await fetch(newUrl, {
+      const response = await fetch(`${url}${endpoint}`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
       });
 
       const result = await response.json();
 
       if (result.success) {
-        settoken(result.token); // 👈 save token in context
+        setToken(result.token); // ✅ update context token
+        localStorage.setItem("token", result.token); // ✅ persist token
         toast.success(currState === "Login" ? "Login Successful!" : "Registration Successful!");
         setShowLogin(false);
       } else {
@@ -61,7 +54,7 @@ const LoginPopup = ({ setShowLogin }) => {
         </div>
 
         <div className="login-popup-inputs">
-          {currState === "Login" ? null : (
+          {currState !== "Login" && (
             <input name='name' onChange={onChangeHandler} value={data.name} type="text" placeholder="Your name" required />
           )}
           <input name='email' onChange={onChangeHandler} value={data.email} type="email" placeholder="Your email" required />
