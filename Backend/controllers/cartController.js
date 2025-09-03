@@ -1,10 +1,13 @@
+import orderModel from "../models/orderModel.js";
 import userModel from "../models/userModel.js";
 import mongoose from "mongoose";
 
 // Add items to user cart
 const addToCart = async (req, res) => {
   try {
-    const { userId, itemId } = req.body;
+    const userId = req.user.id; 
+    const { itemId } = req.body;
+
     if (!mongoose.Types.ObjectId.isValid(userId)) {
       return res.status(400).json({ success: false, message: "Invalid userId" });
     }
@@ -28,7 +31,9 @@ const addToCart = async (req, res) => {
 // Remove items from user cart
 const removeFromCart = async (req, res) => {
   try {
-    const { userId, itemId } = req.body;
+    const userId = req.user.id; 
+    const { itemId } = req.body;
+
     if (!mongoose.Types.ObjectId.isValid(userId)) {
       return res.status(400).json({ success: false, message: "Invalid userId" });
     }
@@ -57,7 +62,7 @@ const removeFromCart = async (req, res) => {
 // Get user cart data
 const getCart = async (req, res) => {
   try {
-    const { userId } = req.body;
+    const userId = req.user.id; 
     if (!mongoose.Types.ObjectId.isValid(userId)) {
       return res.status(400).json({ success: false, message: "Invalid userId" });
     }

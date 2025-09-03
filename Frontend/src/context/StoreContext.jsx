@@ -1,14 +1,19 @@
+// StoreContext.jsx
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 
 export const StoreContext = createContext(null);
 
-const StoreContextProvider = (props) => {
-  const [cartItems, setCartItems] = useState({});
-  const [food_list, setFoodList] = useState([]);
-  const [token, setToken] = useState(localStorage.getItem("token") || ""); // use proper casing
-  const url = "http://localhost:4000";
+const StoreContextProvider = ({ children }) => {
+ 
+  const url = "http://localhost:4000"; // Backend server URL
 
+  const [cartItems, setCartItems] = useState({});
+  const [foodList, setFoodList] = useState([]);
+  const [token, setToken] = useState(localStorage.getItem("token") || "");
+  const [error, setError] = useState(null);
+
+  
   const addToCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: (prev[itemId] || 0) + 1 }));
   };
@@ -28,10 +33,8 @@ const StoreContextProvider = (props) => {
     let totalAmount = 0;
     for (const itemId in cartItems) {
       if (cartItems[itemId] > 0) {
-        const itemInfo = food_list.find((product) => product._id === itemId);
-        if (itemInfo) {
-          totalAmount += itemInfo.price * cartItems[itemId];
-        }
+        const itemInfo = foodList.find((product) => product._id === itemId);
+        if (itemInfo) totalAmount += itemInfo.price * cartItems[itemId];
       }
     }
     return totalAmount;
@@ -40,35 +43,37 @@ const StoreContextProvider = (props) => {
   const fetchFoodList = async () => {
     try {
       const response = await axios.get(`${url}/api/food/list`);
-      setFoodList(response.data.data);
-    } catch (error) {
-      console.error("Failed to fetch food list:", error);
+      setFoodList(response.data.data || []);
+    } catch (err) {
+      console.error("Failed to fetch food list:", err.response?.data || err.message || err);
+      setError(err.response?.data?.message || err.message || "Failed to fetch food list");
     }
   };
 
+ 
   const loadCartData = async (userToken) => {
     try {
-      const response = await axios.get(`${url}/api/food/get`, {
+      const response = await axios.get(`${url}/api/cart/get`, {
         headers: { Authorization: `Bearer ${userToken}` },
       });
-      setCartItems(response.data.data);
-    } catch (error) {
-      console.error("Failed to load cart data:", error);
+      setCartItems(response.data.data || {});
+    } catch (err) {
+      console.error("Failed to load cart data:", err.response?.data || err.message || err);
+      setError(err.response?.data?.message || err.message || "Failed to load cart data");
     }
   };
 
   useEffect(() => {
-    async function loadData() {
+    const loadData = async () => {
       await fetchFoodList();
-      if (token) {
-        await loadCartData(token);
-      }
-    }
+      if (token) await loadCartData(token);
+    };
     loadData();
   }, [token]);
 
+
   const contextValue = {
-    food_list,
+    foodList,
     cartItems,
     setCartItems,
     addToCart,
@@ -77,13 +82,10 @@ const StoreContextProvider = (props) => {
     url,
     token,
     setToken,
+    error,
   };
 
-  return (
-    <StoreContext.Provider value={contextValue}>
-      {props.children}
-    </StoreContext.Provider>
-  );
+  return <StoreContext.Provider value={contextValue}>{children}</StoreContext.Provider>;
 };
 
 export default StoreContextProvider;
