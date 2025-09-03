@@ -4,33 +4,33 @@ import { StoreContext } from '../../context/StoreContext';
 import FoodItem from '../FoodItem/FoodItem';
 
 const FoodDisplay = ({ category }) => {
-    const { food_list } = useContext(StoreContext);
+  const { foodList } = useContext(StoreContext);
 
-    const filteredFoodList = food_list.filter(Item => 
-        category === "All" || category === Item.category
-    );
+  const filteredFoodList = (foodList || []).filter(item =>
+    category === "All" || (item.category && item.category.toLowerCase() === category.toLowerCase())
+  );
 
-    return (
-        <div className='food_display' id='food_display'>
-            <h2>Flavorful Finds Near You</h2>
-            <div className="food-display-list">
-                {filteredFoodList.length > 0 ? (
-                    filteredFoodList.map((Item, index) => (
-                        <FoodItem
-                            key={index}
-                            id={Item._id}
-                            name={Item.name}
-                            description={Item.description}
-                            price={Item.price}
-                            image={Item.image}
-                        />
-                    ))
-                ) : (
-                    <p>No dishes available in this category</p>  // Add fallback message
-                )}
-            </div>
-        </div>
-    );
-}
+  return (
+    <div className='food_display' id='food_display'>
+      <h2>Flavorful Finds Near You</h2>
+      <div className="food-display-list">
+        {filteredFoodList.length > 0 ? (
+          filteredFoodList.map(item => (
+            <FoodItem
+              key={item._id}
+              id={item._id}
+              name={item.name}
+              description={item.description}
+              price={item.price}
+              image={item.image}
+            />
+          ))
+        ) : (
+          <p>No dishes available in this category</p>
+        )}
+      </div>
+    </div>
+  );
+};
 
 export default FoodDisplay;

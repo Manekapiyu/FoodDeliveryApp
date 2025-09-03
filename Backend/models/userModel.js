@@ -1,6 +1,6 @@
-import mongoose from "mongoose"; // ✅ Correct import
+import mongoose from "mongoose"; 
 
-const userSchema = new mongoose.Schema( // ✅ Fixed "mongoosw" typo
+const userSchema = new mongoose.Schema( 
   {
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
